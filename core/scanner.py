@@ -3,7 +3,7 @@ import os
 import csv
 import re
 from core.models import EngineeringFile, Project
-from config.settings import TRASH_PREFIXES, TRASH_FILENAMES, OTTS016_PATTERN
+from config.settings import TRASH_PREFIXES, TRASH_FILENAMES, OTTS016_PATTERN, MAX_PATH_LENGTH
 
 # Scan chosen folder recursively and collect all file information
 # Export results to CSV file for further processing
@@ -25,7 +25,9 @@ class Scanner:
 
                 # 3. Create EngineeringFile object with collected metadata
                 file = EngineeringFile(full_path, filename, extension, size, date, path_length, root_path)
-                file.pattern = self.detect_pattern(filename)
+                file.pattern = self.detect_pattern(filename) # Detect and assign naming pattern (Standard / Unknown / Trash)
+                if not self.check_path_length(full_path): # Check if full path exceeds Windows MAX_PATH limit (260 chars) If path is too long, add warning flag to the file
+                    file.flags.append('path_too_long')
 
                 # 4. Append file object to the results list
                 files.append(file)       
@@ -41,16 +43,24 @@ class Scanner:
             for f in files:
                 writer.writerow([f.filename, f.extension, f.size, f.date, f.path_length, f.project_root, f.pattern])
     
-    def detect_pattern(self, filename):
-        # remove extension before checking
+    def detect_pattern(self, filename):   
         name = os.path.splitext(filename)[0]
+        # Remove file extension to check only the name
         if re.match(OTTS016_PATTERN, name):
+            # Match against OTTS-016 regex pattern from settings
+            # If match → return "Standard"
+            # If filename starts with known trash prefix or is a known trash file → return "Trash"
+            # Otherwise → return "Unknown"
             return "Standard"
-        # check trash files by name prefix or known trash filenames
         elif any(filename.startswith(p) for p in TRASH_PREFIXES) or filename in TRASH_FILENAMES:
             return "Trash"
         else:
             return "Unknown"
+
+    def check_path_length(self, path):
+        # Return True if path length is within Windows limit
+        # Return False if path length exceeds MAX_PATH_LENGTH (260 chars)
+        return len(path) <= MAX_PATH_LENGTH
     
 
 
