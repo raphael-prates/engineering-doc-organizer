@@ -1,6 +1,6 @@
 class EngineeringFile:
 
-    def __init__(self, path, filename, extension, size, date, path_length, project_root)
+    def __init__(self, path, filename, extension, size, date, path_length, project_root):
     # Known at scan time
         self.path = path
         self.filename = filename
@@ -19,10 +19,11 @@ class EngineeringFile:
         self.revision = None
         self.status = None
         self.flags = []
+        self.pattern = None  # standard / unknown / trash
 
 class Project:
 
-    def __init__(self, name, year, folder_path)
+    def __init__(self, name, year, folder_path):
         self.name = name
         self.year = year
         self.folder_path = folder_path
