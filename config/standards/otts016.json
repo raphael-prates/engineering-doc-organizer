@@ -1,0 +1,53 @@
+{
+  "discipline_codes": {
+    "CIV": "Civil Works including structural",
+    "CON": "Construction and Installation documents",
+    "COM": "Pre-Commissioning, Commissioning and De-commissioning",
+    "ELE": "Electrical Systems",
+    "GEO": "Geotechnical",
+    "HSE": "Health Safety Security and Environment",
+    "INC": "Instrumentation and Automation",
+    "MEC": "Mechanical",
+    "PIP": "Piping and layout",
+    "TEL": "IT and telecommunications",
+    "PCS": "Process and Process Safety",
+    "MAR": "Marine and subsea works",
+    "QAC": "Quality Assurance, Quality Control",
+    "OPM": "Operation and Maintenance",
+    "PMT": "Procurement, Project Management, Project Controlling",
+    "PRM": "Permitting and Legal"
+  },
+  "document_type_codes": {
+    "BAS": "Design Basis",
+    "CAL": "Calculations",
+    "CEC": "Cause and Effect Charts",
+    "CER": "Certificates",
+    "DIA": "Diagrams",
+    "DST": "Datasheet",
+    "DWG": "Drawing",
+    "GTC": "General Terms and Conditions",
+    "HMB": "Heat Material Balance",
+    "ISO": "Isometrics",
+    "IRV": "Insurance and Replacement Values Document",
+    "LIS": "Lists",
+    "MNL": "Manuals and instructions",
+    "PID": "Piping and Instrumentation Diagrams",
+    "PFD": "Process Flow Diagrams",
+    "PHY": "Philosophy",
+    "PRC": "Purchase Order, Contract, Requisition",
+    "PLD": "Permit and other legal documentation",
+    "PRO": "Procedures",
+    "REP": "Reports, Technical notes, Studies",
+    "RFQ": "Request for Quotation, Invitation to Bid",
+    "SPE": "Specifications",
+    "SOC": "Scope of Works",
+    "TRA": "Transmittals",
+    "TOR": "Terms of Reference",
+    "TQR": "Technical Queries",
+    "VAR": "Variation Orders"
+  },
+  "area_codes": {
+    "160": "Berço 905",
+    "215": "Subestação"
+  }
+}
