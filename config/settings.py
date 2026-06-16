@@ -12,4 +12,5 @@ EDITAVEIS_FOLDER = 'Editáveis'
 OLD_FOLDER = 'OLD'
 
 # OTTS-016 pattern
-OTTS016_PATTERN = r'^\d{2}-\d{3}-[A-Z]{3}-[A-Z]{3}-\d{3}-\d{4}(-[A-Za-z0-9]+)?'
+OTTS016_PATTERN = r'^(\d{2})-(\d{3})-([A-Z]{3})-([A-Z]{3})-(\d{3})-(\d{4,5})([_-][A-Za-z0-9]+)'
+OTTS016_NO_REVISION = r'^(\d{2})-(\d{3})-([A-Z]{3})-([A-Z]{3})-(\d{3})-(\d{4,5})$'

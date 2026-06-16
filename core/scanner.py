@@ -37,11 +37,22 @@ class Scanner:
         # Open output file in write mode with UTF-8 encoding for special characters
         with open(output_path, 'w', newline='', encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile)
-            # Write header row with column names
-            writer.writerow(['filename', 'extension', 'size', 'date', 'path_length', 'project_root', 'pattern'])
+            # Write header row with all fields
+            writer.writerow([
+                'filename', 'extension', 'size', 'date', 'path_length',
+                'project_root', 'pattern', 'status', 'revision',
+                'company_code', 'terminal_code', 'discipline_code',
+                'doc_type', 'area_code', 'serial_number', 'flags'
+            ])
             # Write one row per EngineeringFile object
             for f in files:
-                writer.writerow([f.filename, f.extension, f.size, f.date, f.path_length, f.project_root, f.pattern])
+                writer.writerow([
+                    f.filename, f.extension, f.size, f.date, f.path_length,
+                    f.project_root, f.pattern, f.status, f.revision,
+                    f.company_code, f.terminal_code, f.discipline_code,
+                    f.doc_type, f.area_code, f.serial_number,
+                    '|'.join(f.flags) if f.flags else ''
+                ])
     
     def detect_pattern(self, filename):   
         name = os.path.splitext(filename)[0]
@@ -51,11 +62,11 @@ class Scanner:
             # If match → return "Standard"
             # If filename starts with known trash prefix or is a known trash file → return "Trash"
             # Otherwise → return "Unknown"
-            return "Standard"
+            return "standard"
         elif any(filename.startswith(p) for p in TRASH_PREFIXES) or filename in TRASH_FILENAMES:
-            return "Trash"
+            return "trash"
         else:
-            return "Unknown"
+            return "unknown"
 
     def check_path_length(self, path):
         # Return True if path length is within Windows limit

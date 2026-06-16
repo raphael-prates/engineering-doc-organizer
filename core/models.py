@@ -1,3 +1,4 @@
+# Example: 00-060-PCS-PID-100-0001
 class EngineeringFile:
 
     def __init__(self, path, filename, extension, size, date, path_length, project_root):
@@ -13,8 +14,11 @@ class EngineeringFile:
     # Filled by Classifier
         self.suggested_name = None
         self.title = None
+        self.company_code  = None
+        self.terminal_code = None 
         self.discipline_code = None
         self.doc_type = None
+        self.area_code = None 
         self.serial_number = None
         self.revision = None
         self.status = None
