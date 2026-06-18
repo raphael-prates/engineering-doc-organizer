@@ -1,4 +1,5 @@
 import streamlit as st
+from ui.pages import config_page
 
 st.set_page_config(page_title="Engineering Document Organizer", layout="wide")
 
@@ -18,7 +19,7 @@ with st.sidebar:
 st.header(page)
 
 if page == "Config":
-    st.info("Config page — coming soon.")
+    config_page.render()
 elif page == "Folder":
     st.info("Folder page — coming soon.")
 elif page == "Scan":
