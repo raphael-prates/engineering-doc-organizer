@@ -1,0 +1,57 @@
+{
+  "pattern": "00-000-XXX-XXX-000-0000.revXX",
+  "segments": [
+    {
+      "type": "numeric",
+      "length": 2,
+      "placeholder": "00",
+      "index": 0,
+      "separator_after": "-"
+    },
+    {
+      "type": "numeric",
+      "length": 3,
+      "placeholder": "000",
+      "index": 1,
+      "separator_after": "-"
+    },
+    {
+      "type": "alpha",
+      "case": "upper",
+      "length": 3,
+      "placeholder": "XXX",
+      "index": 2,
+      "separator_after": "-"
+    },
+    {
+      "type": "alpha",
+      "case": "upper",
+      "length": 3,
+      "placeholder": "XXX",
+      "index": 3,
+      "separator_after": "-"
+    },
+    {
+      "type": "numeric",
+      "length": 3,
+      "placeholder": "000",
+      "index": 4,
+      "separator_after": "-"
+    },
+    {
+      "type": "numeric",
+      "length": 4,
+      "placeholder": "0000",
+      "index": 5,
+      "separator_after": "."
+    },
+    {
+      "type": "revision",
+      "length": 2,
+      "placeholder": "revXX",
+      "index": 6,
+      "separator_after": null
+    }
+  ],
+  "regex": "^\\d{2}\\-\\d{3}\\-[A-Z]{3}\\-[A-Z]{3}\\-\\d{3}\\-\\d{4}\\.[A-Za-z0-9]+$"
+}
