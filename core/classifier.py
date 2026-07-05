@@ -88,4 +88,4 @@ class Classifier:
     def validate_move(self, file, destination):
         # Raise SecurityError if destination is outside project_root
         if not destination.startswith(file.project_root):
-            raise SecurityError(f"Move blocked: {file.filename} cannot leave {file.project_root}")
+            raise ValueError(f"Move blocked: {file.filename} cannot leave {file.project_root}")
